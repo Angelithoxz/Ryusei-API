@@ -1066,7 +1066,7 @@ function animateValue(element, start, end, duration = 800) {
 
 async function fetchUsers() {
   try {
-    const res = await fetch("https://api.sylphy.xyz/users");
+    const res = await fetch("https://app.ryuseiclub.xyz/users");
     const data = await res.json();
     animateValue(document.getElementById('total-users'), 0, parseInt(data.users.Total));
     animateValue(document.getElementById('vip-users'), 0, parseInt(data.users.VIP));
@@ -1117,7 +1117,7 @@ let lastTotal = null;
 
 async function fetchRequests() {
   try {
-    const res = await fetch("https://api.sylphy.xyz/req");
+    const res = await fetch("https://app.ryuseiclub.xyz/req");
     const json = await res.json();
     const now = new Date().toLocaleTimeString();
 
