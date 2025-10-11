@@ -29,7 +29,7 @@ async function gdrive(url) {
       if (data.status !== 200) throw data.statusText;
       return {
         status: true,
-        creator: "I'm Fz ~",
+        creator: "Angelithoxyz",
         data: {
         downloadUrl,
         fileName,
