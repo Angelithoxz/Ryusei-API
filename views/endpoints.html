@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endpoints - Stellar API</title>
+    <link rel="stylesheet" href="/public/css/code.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="shortcut icon" href="/src/imagen/icon.png">
+    <meta property="og:title" content="Endpoint - Stellar API" />
+    <meta name="description" content="Endpoint Stellar API" />
+    <meta property="og:image" content="/src/imagen/icon.png">
+    <!-- Ocultar admin por defecto -->
+    <style>
+        #adminSection {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">
+                <i data-lucide="zap"></i>
+                <span>Stellar API</span>
+            </a>
+            <button class="nav-hamburger" id="navHamburger">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="drawer-menu" id="drawerMenu">
+        <div class="drawer-links">
+            <a href="/home" class="drawer-link"><i data-lucide="home"></i> Home</a>
+            <a href="/logout" class="drawer-link"><i data-lucide="log-out"></i> Logout</a>
+            <a href="/profile" class="drawer-link"><i data-lucide="user"></i> Profile</a>
+            <a href="/about" class="drawer-link"><i data-lucide="user-circle"></i> About</a>
+           <a href="/store" class="drawer-link"><i data-lucide="shopping-bag"></i> Shop</a>
+            <a href="/history" class="drawer-link"><i data-lucide="history"></i> History</a>
+            <div id="adminSection">
+                <a href="/admin" class="drawer-link"><i data-lucide="user-cog"></i> Admin</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="docs" class="main-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>API Endpoints</h2>
+                    <div class="controls">
+                        <input type="text" id="searchEndpoints" placeholder="Search by name or path..." class="search-input">
+                        <button class="action-btn" id="refreshEndpoints">
+                            <i data-lucide="refresh-cw"></i>
+                            <span>Refresh</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="endpointsContainer">
+                    <div class="loading-state"><i data-lucide="loader-2" class="animate-spin"></i><p>Loading endpoints...</p></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="responseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>API Response</h3>
+                <button class="modal-close" id="closeModal"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="response-info" id="responseInfo"></div>
+                <div class="response-output-container">
+                    <div class="response-content" id="responseContent"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="action-btn" id="copyResponse"><i data-lucide="copy"></i><span>Copy</span></button>
+                <button class="action-btn" id="exportCurl"><i data-lucide="terminal"></i><span>Copy as cURL</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery necesario para el script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/public/js/code.js"></script>
+    <script>
+    // Mostrar el enlace de admin si el usuario es administrador
+    $(document).ready(function() {
+        $.get('/api/user/data', function(data) {
+            if (data.isAdmin) {
+                $('#adminSection').show();
+            }
+        }).fail(function() {
+            console.error("Error al cargar datos del usuario.");
+        });
+    });
+    </script>
+</body>
+</html>
