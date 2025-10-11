@@ -31,7 +31,7 @@ async function tiktok(url, type = '') {
     }
     const datas = {
     status: true,
-    creator: "I'm Fz ~",
+    creator: "Angelithoxyz",
     data: info,
     dl:  result.dl,
     type: result.type
