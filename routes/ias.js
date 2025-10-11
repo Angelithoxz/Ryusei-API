@@ -4,7 +4,7 @@ const path = require('path');
 const router = express.Router();
 const axios = require("axios");
 const { checkKey, getUser, resDefault } = require('../database/db');
-let creator = "i'm Fz ~"
+let creator = "Angelithoxyz"
 
 router.get('/ai/chatgpt', async (req, res) => {
   const text = req.query.text;
