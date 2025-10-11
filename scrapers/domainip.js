@@ -7,7 +7,7 @@ const anu = await axios.get(`https://check-host.net/ip-info?host=${link}`)
 const $ = cheerio.load(anu.data)
 const dbres = {
 status: true,
-creator: "I'm Fz ~",
+creator: "Angelithoxyz",
 domain: link,
 info: []
 }
