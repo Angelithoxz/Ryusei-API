@@ -19,7 +19,7 @@ router.get('/home', ensureLogin, async (req, res) => {
   try {
     const host = req.get('host');
     global.domain = `${req.protocol}://${host}`;
-    const response = await fetch(`https://app.ryuseiclub xyz/ikey?apikey=${apikey}`);
+    const response = await fetch(`https://app.ryuseiclub.xyz/ikey?apikey=${apikey}`);
     const info = await response.json();
     const usekey = info.limit;
     res.render('home', { username, email, apikey, limit, usekey, is__admin: isAdmin });
@@ -69,7 +69,7 @@ router.post('/register', (req, res) => {
   if (users.find(u => u.email === email))
     return res.redirect('/register?error=exists');
 
-  const apikey = 'sylphy-' + crypto.randomBytes(2).toString('hex');
+  const apikey = 'ryusei-' + crypto.randomBytes(2).toString('hex');
   newUser({ username, email, password, apikey, limit: 20, profileUrl: null, banned: false, isAdmin: false });
   res.redirect('/login?success=created');
 });
