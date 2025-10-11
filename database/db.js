@@ -1,10 +1,10 @@
 const path = require('path');
 const Database = require('better-sqlite3');
 
-const dbPath = path.join(__dirname, 'users.db');
+const dbPath = path.join(__dirname, 'datos.db');
 const db = new Database(dbPath);
 
-const creator = "I'm Fz ~";
+const creator = "Angelithoxyz ~";
 
 const resDefault = {
   keyBanned: {
