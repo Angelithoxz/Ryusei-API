@@ -21,7 +21,7 @@ async function Lyric(text) {
 const forml = await format(ly[0].lyrics.lyrics)
         return {
                status: true,
-               creator: "I'm Fz ~",
+               creator: "Angelithoxyz",
                info: info[0],
                lyrics: forml
         };
