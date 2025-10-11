@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+body {
+  background-color: #0f172a;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.panel {
+  background-color: #1e293b;
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  box-sizing: border-box;
+}
+#busqueda {
+  display: block;
+  margin: 0 auto 12px auto;
+  max-width: 90%;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+h1::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #e11d48;
+  margin: 5px auto 15px;
+  border-radius: 2px;
+}
+input, select {
+  appearance: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 8px 0 12px;
+  width: 100%;
+  color: #fff;
+  background-color: #334155;
+  outline: none;
+  font-size: 14px;
+}
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 15px;
+}
+.notificaciones {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+.notificacion {
+  background: #1f2937;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 6px;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: aparecer 0.3s forwards, desaparecer 0.3s 2.7s forwards;
+}
+.notificacion.success { background: #16a34a; }
+.notificacion.error { background: #dc2626; }
+@keyframes aparecer {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes desaparecer {
+  to { opacity: 0; transform: translateY(20px); }
+}
+.usuarios-container {
+  margin-top: 10px;
+  padding: 10px;
+  background: #334155;
+  border-radius: 8px;
+}
+.usuarios-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+.usuario-item {
+  background: #1e293b;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.usuario-item:hover {
+  background: #3a3a3a;
+}
+.usuario-item.selected {
+  background: #4f46e5;
+}
+.usuario-item i {
+  min-width: 20px;
+}
+.valor-actual-box, .input-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #2a2a2a;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+.valor-actual-box i, .input-box i {
+  color: #4f46e5;
+}
+</style>
+</head>
+<body>
+  <div class="notificaciones" id="notificaciones"></div>
+  <div class="panel">
+  <img src="https://files.catbox.moe/fiy6zz.jpeg" style="width:100%; border-radius:8px; margin-bottom:15px;">
+  <h1>Panel de Administrador</h1>
+  <input type="text" id="busqueda" placeholder="Escribe para buscar…">  <div class="usuarios-container">
+    <div class="usuarios-list" id="usuariosList">Cargando usuarios...</div>
+  </div><label>Selecciona el campo a modificar</label> <select id="campo"> <option value="">Click Here</option> <option value="limit">Límite</option> <option value="isAdmin">isAdmin</option>
+ <option value="premium">premium</option>
+<option value="banned">Banned</option> <option value="email">Email</option> <option value="profileUrl">Profile URL</option> <option value="apikey">API Key</option> </select>
+
+  <div id="inputContainer" style="display:none;">
+  <div class="valor-actual-box">
+    <i id="valorActualIcon" class="fa-solid fa-circle-info"></i>
+    <span id="valorActual">Valor actual: —</span>
+  </div>
+  <div id="inputWrapper"></div>
+</div>
+<button id="guardar" disabled>Guardar</button>
+
+</div>
+<script>
+const API_USUARIOS = 'https://api.sylphy.xyz/usuarios';
+const API_UPDATE = 'https://api.sylphy.xyz/update';
+
+const usuariosList = document.getElementById('usuariosList');
+const campoSelect = document.getElementById('campo');
+const inputContainer = document.getElementById('inputContainer');
+const inputWrapper = document.getElementById('inputWrapper');
+const valorActual = document.getElementById('valorActual');
+const valorActualIcon = document.getElementById('valorActualIcon');
+const guardarBtn = document.getElementById('guardar');
+const busquedaInput = document.getElementById('busqueda');
+const notificaciones = document.getElementById('notificaciones');
+
+let usuarios = [];
+let usuarioSeleccionado = null;
+
+function cargarUsuarios() {
+  usuariosList.innerHTML = `<div style="text-align:center; color:gray;">Cargando usuarios…</div>`;
+  busquedaInput.disabled = true;
+
+  fetch(API_USUARIOS)
+    .then(res => res.json())
+    .then(data => {
+      usuarios = Object.values(data); 
+      renderUsuarios(usuarios);
+      busquedaInput.disabled = false;
+    })
+    .catch(err => {
+      usuariosList.innerHTML = `<div style="text-align:center; color:red;">Error al cargar usuarios</div>`;
+      console.error(err);
+      busquedaInput.disabled = true;
+    });
+}
+
+function renderUsuarios(lista) {
+  usuariosList.innerHTML = '';
+
+  if (!lista || lista.length === 0) {
+    usuariosList.innerHTML = `<div style="text-align:center; color:gray;">No se encontraron usuarios.</div>`;
+    return;
+  }
+
+  lista.forEach(u => {
+    const div = document.createElement('div');
+    div.className = 'usuario-item';
+    div.dataset.username = u.username;
+
+    let iconClass = 'fa-user';
+    let color = 'inherit';
+    if (u.banned) {
+      iconClass = 'fa-user-slash';
+      color = 'red';
+    } else if (u.isAdmin) {
+      iconClass = 'fa-user-shield';
+      color = 'gold';
+    }
+
+    div.innerHTML = `<i class="fa-solid ${iconClass}" style="color:${color}"></i> <span>${u.username}</span>`;
+    div.addEventListener('click', () => seleccionarUsuario(u.username, div));
+    usuariosList.appendChild(div);
+  });
+}
+
+busquedaInput.addEventListener('input', () => {
+  const texto = busquedaInput.value.trim().toLowerCase();
+
+  if (!usuarios.length) {
+    usuariosList.innerHTML = `<div style="text-align:center; color:gray;">Cargando usuarios…</div>`;
+    return;
+  }
+
+  if (!texto) {
+    renderUsuarios(usuarios);
+    return;
+  }
+
+  const filtrados = usuarios.filter(u => {
+    return (u.username || '').toLowerCase().includes(texto);
+  });
+
+  renderUsuarios(filtrados);
+});
+
+function seleccionarUsuario(username, item) {
+  usuarioSeleccionado = usuarios.find(u => u.username === username);
+  document.querySelectorAll('.usuario-item').forEach(c => c.classList.remove('selected'));
+  item.classList.add('selected');
+  resetInput();
+}
+
+campoSelect.addEventListener('change', () => {
+  if (!campoSelect.value || !usuarioSeleccionado) {
+    resetInput();
+    return;
+  }
+
+  const campo = campoSelect.value;
+  const valor = usuarioSeleccionado[campo];
+  valorActual.textContent = valor !== undefined ? valor : '—';
+
+  if (campo === 'isAdmin' || campo === 'banned' || campo === 'premium') {
+      valorActualIcon.className = 'fa-solid fa-lock';
+  } else if (campo === 'limit') {
+      valorActualIcon.className = 'fa-solid fa-hashtag';
+  } else if (campo === 'email') {
+      valorActualIcon.className = 'fa-solid fa-envelope';
+  } else if (campo === 'profileUrl') {
+      valorActualIcon.className = 'fa-solid fa-globe';
+  } else if (campo === 'apikey') {
+      valorActualIcon.className = 'fa-solid fa-key';
+  } else {
+      valorActualIcon.className = 'fa-solid fa-circle-info';
+  }
+
+  let input;
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'input-box';
+  const icon = document.createElement('i');
+
+  if (campo === 'isAdmin' || campo === 'banned' || campo === 'premium') {
+    input = document.createElement('select');
+    input.innerHTML = `<option value="true">true</option><option value="false">false</option>`;
+    icon.className = 'fa-solid fa-lock';
+  } else {
+    input = document.createElement('input');
+    if (campo === 'limit') {
+      input.type = 'number';
+      icon.className = 'fa-solid fa-hashtag';
+    }
+    if (campo === 'email') {
+      input.type = 'email';
+      icon.className = 'fa-solid fa-envelope';
+    }
+    if (campo === 'profileUrl') {
+      input.type = 'text';
+      icon.className = 'fa-solid fa-globe';
+    }
+    if (campo === 'apikey') {
+      input.type = 'text';
+      icon.className = 'fa-solid fa-key';
+    }
+  }
+
+  input.id = 'nuevoValor';
+  input.value = '';
+  inputWrapper.innerHTML = '';
+  wrapper.appendChild(icon);
+  wrapper.appendChild(input);
+  inputWrapper.appendChild(wrapper);
+
+  inputContainer.style.display = 'block';
+  guardarBtn.disabled = false;
+});
+
+guardarBtn.addEventListener('click', () => {
+  const campo = campoSelect.value;
+  const nuevoValorInput = document.getElementById('nuevoValor');
+  const nuevoValor = nuevoValorInput?.value.trim();
+
+  if (!usuarioSeleccionado || !campo || !nuevoValor) {
+    notificar('Completa todos los campos.', 'error');
+    return;
+  }
+
+  fetch(API_UPDATE, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username: usuarioSeleccionado.username, campo, nuevoValor })
+  })
+  .then(res => {
+    if (!res.ok) return res.text().then(text => { throw new Error(text); });
+    return res.text();
+  })
+  .then(resp => {
+    notificar(resp, 'success');
+    cargarUsuarios();
+    resetInput();
+  })
+  .catch(err => {
+    notificar('Error: ' + err.message, 'error');
+  });
+});
+
+function resetInput() {
+  inputWrapper.innerHTML = '';
+  valorActual.textContent = '—';
+  valorActualIcon.className = 'fa-solid fa-circle-info';
+  inputContainer.style.display = 'none';
+  guardarBtn.disabled = true;
+}
+
+function notificar(mensaje, tipo = 'success') {
+  const div = document.createElement('div');
+  div.className = `notificacion ${tipo}`;
+  const icono = tipo === 'success' ? 'fa-check-circle' : 'fa-triangle-exclamation';
+  div.innerHTML = `<i class="fa-solid ${icono}"></i> <span>${mensaje}</span>`;
+  notificaciones.appendChild(div);
+  setTimeout(() => { div.remove(); }, 3000);
+}
+
+cargarUsuarios();
+</script>
+</body>
+</html>

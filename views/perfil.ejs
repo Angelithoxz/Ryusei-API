@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile - Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+:root {
+  --bg-color: #0e1628;
+  --card-bg: #1b263b;
+  --header-bg: #121c34;
+  --input-bg: #24324b;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --text-light: #aaa;
+  --text-accent: #60a5fa;
+  --border-radius: 12px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+body {
+  background-color: var(--bg-color);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background .3s ease, color .3s ease;
+}
+body.light {
+  --bg-color: #f9fafb;
+  --card-bg: #fff;
+  --header-bg: #e5e7eb;
+  --input-bg: #f3f4f6;
+  --text-light: #555;
+  --text-accent: #2563eb;
+  color: #000;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--header-bg);
+  padding: 12px 20px;
+  box-shadow: var(--shadow);
+}
+a.home-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: transparent;
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 6px;
+  font-size: 24px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+a.home-btn:hover {
+  transform: scale(1.1);
+}
+
+body.light a.home-btn {
+  color: #000;
+}
+header .right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.theme-toggle-wrapper {
+  position: relative;
+  width: 60px;
+  height: 28px;
+}
+
+.theme-toggle-wrapper input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-toggle-switch {
+  background: var(--input-bg);
+  border-radius: 14px;
+  cursor: pointer;
+  position: absolute;
+  inset: 0;
+  transition: background 0.3s ease;
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card-bg);
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: var(--shadow);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.copy-btn i {
+  font-size: 14px;
+}
+
+.copy-btn:hover {
+  background: var(--primary-hover);
+}
+
+/* Adaptación al tema claro */
+body.light .copy-btn {
+  background: #f3f4f6;
+  color: #000;
+}
+
+body.light .copy-btn:hover {
+  background: #e5e7eb;
+}
+
+.theme-toggle-switch .theme-icon {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--primary);
+}
+
+body.light .theme-toggle-switch {
+  background: var(--input-bg);
+}
+
+#themeToggle:checked + .theme-toggle-switch .theme-icon {
+  transform: translateX(32px);
+}
+header .avatar {
+  background: linear-gradient(135deg, #6ee7b7, #3b82f6);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  overflow: hidden;
+}
+header .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.container {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+.card {
+  background: var(--card-bg);
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform .2s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+}
+.profile-info {
+  text-align: center;
+}
+.profile-info .avatar-big {
+  width: 100px;
+  height: 100px;
+  font-size: 26px;
+  background: linear-gradient(135deg, #6ee7b7, #3b82f6);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto 10px;
+  overflow: hidden;
+}
+.profile-info .avatar-big img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.info-block {
+  background: var(--input-bg);
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.info-block .label {
+  font-size: 12px;
+  color: var(--text-light);
+}
+.referral-code {
+  background: var(--input-bg);
+  padding: 15px;
+  border-radius: var(--border-radius);
+  margin-top: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.referral-code code {
+  color: var(--text-accent);
+  font-size: 16px;
+  display: block;
+  margin: 8px 0;
+  word-break: break-word;
+}
+button {
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 16px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: var(--shadow);
+}
+button:hover {
+  background: var(--primary-hover);
+}
+footer {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 12px;
+  margin: 20px 0;
+}
+i.fa-coins { color: gold; }
+i.fa-calendar-alt { color: #3b82f6; }
+i.fa-gift { color: #ec4899; }
+i.fa-fingerprint { color: #22c55e; }
+#copyToast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background: #10b981;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity .4s ease, transform .4s ease;
+  z-index: 9999;
+  box-shadow: var(--shadow);
+}
+#copyToast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+</style>
+</head>
+<body>
+
+<header>
+<a href="/home" class="home-btn" aria-label="Back to Home">
+  <i class="fas fa-right-from-bracket"></i>
+</a>
+  <div class="right">
+<div class="theme-toggle-wrapper">
+  <input type="checkbox" id="themeToggle" />
+  <label for="themeToggle" class="theme-toggle-switch">
+    <span class="theme-icon"><i class="fas fa-moon"></i></span>
+  </label>
+</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="card profile-info">
+    <h2><i class="fas fa-user-circle"></i> Your Profile</h2>
+    <label for="avatarInput">
+      <div class="avatar-big" id="profileAvatar">
+        <img src="<%= profileUrl %>">
+      </div>
+    </label>
+    <input type="file" id="avatarInput" style="display:none" accept="image/*">
+    <h3><%= name %></h3>
+    <p><i class="fas fa-envelope"></i> <%= email %></p>
+
+    <div class="info-block">
+      <div>
+        <div class="label">Plan Type <i class="fas fa-gift"></i></div>
+        <strong><%= type %></strong>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div>
+        <div class="label">Usage Limit <i class="fas fa-coins"></i></div>
+        <strong><%= usekey %> / <%= limit %></strong>
+      </div>
+    </div>
+
+    <div class="referral-code">
+      <div class="label"><i class="fas fa-key"></i> Your API Key</div>
+      <p>You can use this API Key in your applications. Keep it secret!</p>
+      <code id="referralCode"><%= apikey %></code>
+      <button id="copyBtn" class="copy-btn">
+  <i class="fas fa-copy"></i> Copy Apikey
+</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><i class="fas fa-key"></i> Generate API Key</h2>
+    <p>Generate a new personalized API key for your integrations.</p>
+    <div class="info-block">
+      <div>
+        <div class="label"><i class="fas fa-fingerprint"></i> Your API Key</div>
+        <strong id="apiKey">No key generated yet</strong>
+      </div>
+    </div>
+    <button onclick="generateApiKey()"><i class="fas fa-sync-alt"></i> Generate API Key</button>
+  </div>
+
+</div>
+
+<footer>
+  &copy; Sylphy API. All rights reserved.
+</footer>
+
+<div id="copyToast">Copied to clipboard!</div>
+
+<script>
+document.getElementById("avatarInput").addEventListener("change", function(e) {
+  const avatarBig = document.getElementById("profileAvatar");
+  const avatarHeader = document.getElementById("headerAvatar");
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      avatarBig.innerHTML = `<img src="${reader.result}">`;
+      avatarHeader.innerHTML = `<img src="${reader.result}">`;
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+document.getElementById("copyBtn").addEventListener("click", function () {
+  const code = document.getElementById("referralCode").innerText;
+  const btn = this;
+  navigator.clipboard.writeText(code).then(() => {
+    btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+    showToast();
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-copy"></i> Copy Code';
+    }, 2000);
+  });
+});
+
+function showToast() {
+  const toast = document.getElementById("copyToast");
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 2000);
+}
+
+function generateApiKey() {
+  const key = `api_${Math.random().toString(36).substr(2, 16)}`;
+  const el = document.getElementById("apiKey");
+  el.textContent = key;
+  el.style.color = 'var(--text-accent)';
+}
+
+document.getElementById("themeToggle").addEventListener("change", () => {
+  const body = document.body;
+  const icon = document.querySelector(".theme-icon");
+  body.classList.toggle("light");
+
+  if (body.classList.contains("light")) {
+    icon.innerHTML = `<i class="fas fa-sun"></i>`;
+  } else {
+    icon.innerHTML = `<i class="fas fa-moon"></i>`;
+  }
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  const icon = document.querySelector(".theme-icon");
+  const toggle = document.getElementById("themeToggle");
+
+  if (body.classList.contains("light")) {
+    toggle.checked = true;
+    icon.innerHTML = `<i class="fas fa-sun"></i>`;
+  } else {
+    icon.innerHTML = `<i class="fas fa-moon"></i>`;
+  }
+});
+</script>
+
+</body>
+</html>

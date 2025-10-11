@@ -1,0 +1,545 @@
+{
+  "name": "Sylphy API-REST",
+  "version": "v1.0.0 Alpha",
+  "description": "The Best",
+  "bannerImage": "/src/banner.jpg",
+  "header": {
+    "status": "Online!"
+  },
+  "apiSettings": {
+    "creator": "I'm Fz ~", 
+    "apikey": ["Sylphy"]
+  },
+  "categories": [
+     {
+      "name": "Fun anime",
+      "items": [
+        {
+          "name": "Reaction",
+          "desc": "Usa 'list' en type para ver la lista disponible de reacciones.",
+          "path": "/sfw/reaction?type=",
+          "status": "ready",
+          "params": {
+            "type": "Categoría de la reacción, ejemplo: cry (llorar)"
+          }
+        }
+      ]
+    },
+        {
+      "name": "StickerLy",
+      "items": [
+        {
+          "name": "Search",
+          "desc": "Busca y obten stickers desde sticker.ly",
+          "path": "/stickerly/search?q=",
+          "status": "ready",
+          "params": {
+            "q": "Texto para buscar stickers"
+          }
+        },
+        {
+          "name": "Detail",
+          "desc": "Obtener información y stickers vía URL",
+          "path": "/stickerly/detail?url=",
+          "status": "ready",
+          "params": {
+            "url": "URL del paquete de stickers."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Searches",
+      "items": [
+        {
+          "name": "YouTube",
+          "desc": "Buscar videos de YouTube",
+          "path": "/search/youtube?q=",
+          "status": "ready",
+          "params": {
+            "q": "Texto a buscar"
+          }
+        },
+        {
+          "name": "Spotify",
+          "desc": "Buscar canciones en Spotify",
+          "path": "/search/spotify?q=",
+          "status": "ready",
+          "params": {
+            "q": "Texto a buscar"
+          }
+        },
+        {
+          "name": "TikTok Search",
+          "desc": "Buscar vídeos aleatorios de tiktok.",
+          "path": "/search/tiktoks?q=",
+          "status": "ready",
+          "params": {
+            "q": "Texto a buscar"
+          }
+        },
+        {
+          "name": "Pinterest",
+          "desc": "Buscar imágenes en Pinterest",
+          "path": "/search/pinterest?q=",
+          "status": "ready",
+          "params": {
+            "q": "Texto a buscar"
+          }
+        },
+        {
+          "name": "XNXX Search",
+          "desc": "Buscar videos en XNXX",
+          "path": "/search/xnxx?q=",
+          "status": "ready",
+          "params": {
+            "q": "Texto a buscar"
+          }
+        },
+        {
+          "name": "XVIDEOS Search",
+          "desc": "Buscar videos en XVIDEOS",
+          "path": "/search/xvideos?q=",
+          "status": "ready",
+          "params": {
+            "q": "Texto a buscar"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Downloads",
+      "items": [
+                {
+          "name": "YouTube Play",
+          "desc": "Descargar video/audio de YouTube en diferentes calidades.",
+          "path": "/download/ytplay?q=&format=",
+          "status": "ready",
+          "params": {
+            "q": "Título del vídeo de YouTube.",
+            "format": "Formato / Calidad a descargar."
+          }
+        },
+        {
+          "name": "YTMP3 V2",
+          "desc": "Descargar audio de YouTube.",
+          "path": "/download/ytmp3v2?url=",
+          "status": "update",
+          "params": {
+            "url": "Título del vídeo de YouTube."
+          }
+        },
+        {
+          "name": "YouTube MP4",
+          "desc": "Descargar video de YouTube",
+          "path": "/download/ytmp4?url=",
+          "status": "ready",
+          "params": {
+            "url": "Enlace del video"
+          }
+        },
+        {
+          "name": "YTMP4 V2",
+          "desc": "Descargar video de YouTube en diferentes calidades ( 720, 480, 360 )",
+          "path": "/download/ytmp4v2?url=&q=",
+          "status": "ready",
+          "params": {
+            "url": "Enlace del video",
+            "q": "Ingresa la calidad a descargar, ejemplo: 720, 480, 360"
+          }
+        },
+        {
+          "name": "YouTube MP3",
+          "desc": "Descargar audio de YouTube",
+          "path": "/download/ytmp3?url=",
+          "status": "ready",
+          "params": {
+            "url": "Enlace del video"
+          }
+        },
+        {
+          "name": "Spotify",
+          "desc": "Descargar canción de Spotify",
+          "path": "/download/spotify?url=",
+          "status": "ready",
+          "params": {
+            "url": "Enlace de la canción"
+          }
+        },
+        {
+          "name": "Pinterest",
+          "desc": "Descargar imagen de Pinterest",
+          "path": "/download/pinterest?url=",
+          "status": "ready",
+          "params": {
+            "url": "Enlace de la imagen"
+          }
+        },
+        {
+          "name": "Mediafire",
+          "desc": "Descargar archivo de Mediafire",
+          "path": "/download/mediafire?url=",
+          "status": "ready",
+          "params": {
+            "url": "Enlace del archivo"
+          }
+        },
+        {
+          "name": "Terabox Downloader",
+          "desc": "Descargar archivos de Terabox",
+          "path": "/download/terabox?url=",
+          "status": "ready",
+          "params": {
+            "url": "Enlace del archivo"
+          }
+        },
+        {
+          "name": "Facebook",
+          "desc": "Descargar video de Facebook",
+          "path": "/download/facebook?url=",
+          "status": "ready",
+          "params": {
+            "url": "Enlace del video"
+          }
+        },
+        {
+          "name": "Instagram",
+          "desc": "Descargar contenido de Instagram",
+          "path": "/download/instagram?url=",
+          "status": "ready",
+          "params": {
+            "url": "Enlace del post"
+          }
+        },
+        {
+          "name": "TikTok",
+          "desc": "Descargar video de TikTok",
+          "path": "/download/tiktok?url=",
+          "status": "ready",
+          "params": {
+            "url": "Enlace del video"
+          }
+        },
+        {
+          "name": "NPMJS",
+          "desc": "Descargar paquete de npm",
+          "path": "/download/npm?pkg=&version=",
+          "status": "ready",
+          "params": {
+            "pkg": "Nombre del paquete",
+            "version": "Versión del paquete (ej. latest)"
+          }
+        },
+        {
+          "name": "XNXX Downloader",
+          "desc": "Descargar vídeos de XNXX.",
+          "path": "/download/xnxx?url=",
+          "status": "ready",
+          "params": {
+            "url": "URL del vídeo de XNXX."
+          }
+        },
+        {
+          "name": "XVIDEOS Downloader",
+          "desc": "Descargar vídeos de XVIDEOS.",
+          "path": "/download/xvideos?url=",
+          "status": "ready",
+          "params": {
+            "url": "URL del vídeo de XVIDEOS."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tools",
+      "items": [
+        {
+          "name": "Lyrics",
+          "desc": "Buscar letra de canciones",
+          "path": "/tools/lyrics?q=",
+          "status": "ready",
+          "params": {
+            "q": "Nombre de la canción"
+          }
+        },
+        {
+          "name": "Host Info",
+          "desc": "Obtener información de un dominio",
+          "path": "/tools/hostinfo?domain=",
+          "status": "ready",
+          "params": {
+            "domain": "URL o dominio"
+          }
+        },
+        {
+          "name": "Upscale Image (HD)",
+          "desc": "Sube la calidad a una imagen vía URL.",
+          "path": "/tools/upscale?url=",
+          "status": "ready",
+          "params": {
+          "url": "URL de la imagen"
+          }
+        }
+      ]
+    },
+    {
+      "name": "IAs",
+      "items": [
+        {
+          "name": "ChatGPT",
+          "desc": "Habla con ChatGPT",
+          "path": "/ai/chatgpt?text=",
+          "status": "ready",
+          "params": {
+            "text": "Texto a enviar"
+          }
+        },
+        {
+          "name": "Blackbox",
+          "desc": "Respuestas de código tipo Blackbox",
+          "path": "/ai/blackbox?text=",
+          "status": "ready",
+          "params": {
+            "text": "Texto a enviar"
+          }
+        },
+        {
+          "name": "Ghibli Image",
+          "desc": "Convierte una imagen al estilo ghibli.",
+          "path": "/ai/ghibli?url=",
+          "status": "ready",
+          "params": {
+            "url": "URL directa de la imagen a editar."
+          }
+        }
+      ]
+    },
+    {
+  "name": "NSFW",
+  "items": [
+    {
+      "name": "Hentai image",
+      "desc": "Genera una imagen hentai aleatoria.",
+      "path": "/nsfw/hentai",
+      "status": "ready"
+    },
+    {
+      "name": "Ecchi image",
+      "desc": "Genera una imagen ecchi aleatoria.",
+      "path": "/nsfw/ecchi",
+      "status": "ready"
+    },
+    {
+      "name": "Furry image",
+      "desc": "Contenido NSFW de furros (animado).",
+      "path": "/nsfw/furro",
+      "status": "ready"
+    },
+    {
+      "name": "Yaoi image",
+      "desc": "Imagen yaoi NSFW aleatoria.",
+      "path": "/nsfw/yaoi",
+      "status": "ready"
+    },
+    {
+      "name": "Yuri image",
+      "desc": "Imagen yuri NSFW aleatoria.",
+      "path": "/nsfw/yuri",
+      "status": "ready"
+    },
+    {
+      "name": "Yuri 2 image",
+      "desc": "Imagen yuri alternativa NSFW.",
+      "path": "/nsfw/yuri2",
+      "status": "ready"
+    },
+    {
+      "name": "Trap image",
+      "desc": "Imagen NSFW de trapitos (animado).",
+      "path": "/nsfw/trapito",
+      "status": "ready"
+    },
+    {
+      "name": "NSFW Glass",
+      "desc": "Contenido con temática de gafas (animado).",
+      "path": "/nsfw/nsfwglass",
+      "status": "ready"
+    },
+    {
+      "name": "NSFW Loli",
+      "desc": "Contenido NSFW loli (animado).",
+      "path": "/nsfw/nsfwloli",
+      "status": "ready"
+    },
+    {
+      "name": "NSFW Orgy",
+      "desc": "Orgia hentai aleatoria.",
+      "path": "/nsfw/nsfworgy",
+      "status": "ready"
+    },
+    {
+      "name": "Lesbian art",
+      "desc": "Imagen de lesbianas en estilo animado.",
+      "path": "/nsfw/imagenlesbians",
+      "status": "ready"
+    },
+    {
+      "name": "NSFW Ero",
+      "desc": "Arte erótico animado.",
+      "path": "/nsfw/nsfwero",
+      "status": "ready"
+    },
+    {
+      "name": "NSFW BDSM",
+      "desc": "Contenido BDSM real.",
+      "path": "/nsfw/nsfwbdsm",
+      "status": "ready"
+    },
+    {
+      "name": "NSFW Cum",
+      "desc": "Contenido explícito con semen (real).",
+      "path": "/nsfw/nsfwcum",
+      "status": "ready"
+    },
+    {
+      "name": "NSFW Femdom",
+      "desc": "Contenido de dominación femenina (real).",
+      "path": "/nsfw/nsfwfemdom",
+      "status": "ready"
+    },
+    {
+      "name": "NSFW Foot",
+      "desc": "Contenido con fetiche de pies (real).",
+      "path": "/nsfw/nsfwfoot",
+      "status": "ready"
+    },
+    {
+      "name": "NSFW Ass",
+      "desc": "Contenido explícito centrado en traseros.",
+      "path": "/nsfw/nsfwass",
+      "status": "ready"
+    },
+    {
+      "name": "Asian video",
+      "desc": "Video porno asiático aleatorio.",
+      "path": "/nsfw/asianvid",
+      "status": "ready"
+    },
+    {
+      "name": "Ass video",
+      "desc": "Video centrado en traseros.",
+      "path": "/nsfw/assvid",
+      "status": "ready"
+    },
+    {
+      "name": "BJ video",
+      "desc": "Video de sexo oral (blowjob).",
+      "path": "/nsfw/bjvid",
+      "status": "ready"
+    },
+    {
+      "name": "Booty image",
+      "desc": "Imágenes de traseros (booty).",
+      "path": "/nsfw/booty",
+      "status": "ready"
+    },
+    {
+      "name": "Casero image",
+      "desc": "Contenido amateur casero.",
+      "path": "/nsfw/casero",
+      "status": "ready"
+    },
+    {
+      "name": "Industrial video",
+      "desc": "Videos porno industriales o producidos.",
+      "path": "/nsfw/industrial",
+      "status": "ready"
+    },
+    {
+      "name": "Lesbian video",
+      "desc": "Video porno de lesbianas.",
+      "path": "/nsfw/lesbianvid",
+      "status": "ready"
+    },
+    {
+      "name": "Masturbation video",
+      "desc": "Video de masturbación.",
+      "path": "/nsfw/masturbate",
+      "status": "ready"
+    },
+    {
+      "name": "Muslo image",
+      "desc": "Contenido centrado en muslos (real).",
+      "path": "/nsfw/muslo",
+      "status": "ready"
+    },
+    {
+      "name": "Pack image",
+      "desc": "Imagen de pack o filtraciones.",
+      "path": "/nsfw/pack",
+      "status": "ready"
+    },
+    {
+      "name": "Panties image",
+      "desc": "Contenido con ropa interior (panties).",
+      "path": "/nsfw/panties",
+      "status": "ready"
+    },
+    {
+      "name": "Porn image",
+      "desc": "Imagen porno aleatoria.",
+      "path": "/nsfw/porno",
+      "status": "ready"
+    },
+    {
+      "name": "Pussy image",
+      "desc": "Imágenes explícitas de vagina.",
+      "path": "/nsfw/pussy",
+      "status": "ready"
+    },
+    {
+      "name": "Pussy video",
+      "desc": "Video explícito de vagina.",
+      "path": "/nsfw/pussyvid",
+      "status": "ready"
+    },
+    {
+      "name": "Random XXX",
+      "desc": "Contenido porno aleatorio.",
+      "path": "/nsfw/randomxxx",
+      "status": "ready"
+    },
+    {
+      "name": "Solo image",
+      "desc": "Imagen de persona sola en acción.",
+      "path": "/nsfw/solo",
+      "status": "ready"
+    },
+    {
+      "name": "Tetas image",
+      "desc": "Imagen de pechos desnudos.",
+      "path": "/nsfw/tetas",
+      "status": "ready"
+    },
+    {
+      "name": "Tetas video",
+      "desc": "Video centrado en pechos.",
+      "path": "/nsfw/tetasvid",
+      "status": "ready"
+    },
+    {
+      "name": "TTXXX image",
+      "desc": "Contenido porno de categoría 'ttxxx'.",
+      "path": "/nsfw/ttxxx",
+      "status": "ready"
+    },
+    {
+      "name": "WP Random",
+      "desc": "Contenido random para WhatsApp (NSFW).",
+      "path": "/nsfw/wprandom",
+      "status": "ready"
+    }
+  ]
+}
+  ]
+}
