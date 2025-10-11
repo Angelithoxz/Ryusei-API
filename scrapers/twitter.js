@@ -41,7 +41,7 @@ async function twitter(url) {
 
         resolve({
           status: true,
-          creator: "I'm Fz ~",
+          creator: "Angelithoxyz",
           data: {
           type: "video",
           title: title,
