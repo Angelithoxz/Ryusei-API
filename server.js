@@ -72,6 +72,7 @@ app.use((req, res, next) => {
   if (apikey) {
     apikeyUsage.set(apikey, (apikeyUsage.get(apikey) || 0) + 1);
   }
+  let visitCount = 0;
 
   console.log(chalk.green("🌱 Solicitud al endpoint:"), chalk.blue(endpoint));
   console.log(chalk.cyan("🌿 IP:"), chalk.red(ip));
