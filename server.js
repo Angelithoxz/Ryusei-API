@@ -72,12 +72,13 @@ app.use((req, res, next) => {
   if (apikey) {
     apikeyUsage.set(apikey, (apikeyUsage.get(apikey) || 0) + 1);
   }
-  let visitCount = 0;
 
+  let visitCount;
   console.log(chalk.green("🌱 Solicitud al endpoint:"), chalk.blue(endpoint));
   console.log(chalk.cyan("🌿 IP:"), chalk.red(ip));
   console.log(chalk.yellow("------"));
-visitCount++
+
+   visitCount += 1
 
   next();
 });
@@ -166,7 +167,7 @@ app.get('/api/stats', (req, res) => {
     const cpu = os.cpus()[0].model;
     const osPlatform = `${os.platform()} ${os.release()}`;
 
-    const totalRequests = 0;
+    const totalRequests = totalReq;
     const uniqueVisitors = visitCount || 0;
 
     getCpuUsage((cpuUsage) => {
