@@ -7,10 +7,10 @@
     <meta name="keywords" content="API, API Documentation, REST API, Developer Tools">
     <meta name="author" content="Sylphiette's Team">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://api.sylphy.xyz"> <meta property="og:title" content="Modern API Documentation">
+    <meta property="og:url" content="https://app.ryuseiclub.xyz"> <meta property="og:title" content="Modern API Documentation">
     <meta property="og:description" content="Explore our various API endpoints with a modern, easy-to-use interface..">
     <meta property="og:image" content="/src/banner.jpg"> <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://api.sylphy.xyz"> <meta property="twitter:title" content="Sylphy, is the best">
+    <meta property="twitter:url" content="https://app.ryuseiclub.xyz"> <meta property="twitter:title" content="Sylphy, is the best">
     <meta property="twitter:description" content="Explore our various API endpoints with a modern, easy-to-use interface.">
     <meta property="twitter:image" content="/src/banner.jpg"> <link rel="icon" href="/src/icon.png" type="image/png"> <title id="page">Sylphy API</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
@@ -482,7 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(animate);
   }
 
-  fetch('https://api.sylphy.xyz/users')
+  fetch('https://app.ryuseiclub.xyz/users')
     .then(r => r.json())
     .then(data => {
       animateValue(totalUsers, +data.users.Total);
@@ -493,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let lastTotal = null;
   function fetchRequests() {
-    fetch('https://api.sylphy.xyz/req')
+    fetch('https://app.ryuseiclub.xyz/req')
       .then(r => r.json())
       .then(data => {
         const now = new Date().toLocaleTimeString();
