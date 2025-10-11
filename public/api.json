@@ -1,0 +1,722 @@
+{
+  "status": true,
+  "creator": "I'm Zyxl",
+  "content": {
+    "name": "API Stellar",
+    "version": "v1.0",
+    "description": "Api Oficial",
+    "apiSettings": {
+      "creator": "I'm Zyxl"
+    },
+    "categories": [
+      {
+        "name": "Searches",
+        "items": [
+          {
+            "name": "Youtube",
+            "desc": "Buscar información de un video de YouTube.",
+            "path": "/search/yt",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "query",
+                  "type": "text",
+                  "desc": "Ingresa un título de un video de YouTube",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+{
+  "name": "SoundCloud",
+  "desc": "Buscar información de canciones en SoundCloud.",
+  "path": "/search/soundcloud",
+  "method": "GET",
+  "status": "ready",
+  "location": "EU",
+  "params": {
+    "query": [
+      {
+        "name": "query",
+        "type": "text",
+        "desc": "Ingresa el título o palabra clave de una canción en SoundCloud",
+        "required": true
+      },
+      {
+        "name": "apikey",
+        "type": "text",
+        "desc": "Ingresa tu clave de acceso",
+        "required": true
+      }
+    ]
+  }
+},
+          {
+            "name": "Google Imagen",
+            "desc": "Buscar imágenes en Google.",
+            "path": "/search/googleimagen",
+            "method": "GET",
+            "status": "ready",
+            "location": "US",
+            "params": {
+              "query": [
+                {
+                  "name": "query",
+                  "type": "text",
+                  "desc": "Ingresa un texto a buscar",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Aplicación",
+            "desc": "Buscar información de una APK.",
+            "path": "/search/apk",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "query",
+                  "type": "text",
+                  "desc": "Ingresa un nombre de la APK",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Spotify",
+            "desc": "Buscar música en Spotify.",
+            "path": "/search/spotify",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "query",
+                  "type": "text",
+                  "desc": "Ingresa el título de una canción",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Pinterest",
+            "desc": "Buscar imágenes en Pinterest.",
+            "path": "/search/pinterest",
+            "method": "GET",
+            "status": "ready",
+            "location": "US",
+            "params": {
+              "query": [
+                {
+                  "name": "query",
+                  "type": "text",
+                  "desc": "Ingresa un texto para la búsqueda",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Tiktok",
+            "desc": "Buscar información de un video de TikTok.",
+            "path": "/search/tiktok",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "query",
+                  "type": "text",
+                  "desc": "Ingresa el título de un video",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Búsqueda en MediaFire",
+            "desc": "Busca archivos en MediaFire.",
+            "path": "/search/mediafire",
+            "method": "GET",
+            "status": "ready",
+            "location": "US",
+            "params": {
+              "query": [
+                {
+                  "name": "query",
+                  "type": "text",
+                  "desc": "Ingresa un texto a buscar",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Tools",
+        "items": [
+          {
+            "name": "Lyrics",
+            "desc": "Buscar letras de canciones.",
+            "path": "/tools/lyrics",
+            "method": "GET",
+            "status": "ready",
+            "location": "US",
+            "params": {
+              "query": [
+                {
+                  "name": "query",
+                  "type": "text",
+                  "desc": "Nombre del tema musical",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Upscale (HD)",
+            "desc": "Mejorar calidad de imagen.",
+            "path": "/tools/upscale",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "url",
+                  "type": "text",
+                  "desc": "URL de la imagen a mejorar",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Ss Web",
+            "desc": "Capturar imagen de una página web.",
+            "path": "/tools/ssweb",
+            "method": "GET",
+            "status": "ready",
+            "location": "US",
+            "params": {
+              "query": [
+                {
+                  "name": "url",
+                  "type": "text",
+                  "desc": "URL de la página web",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Inteligencia Artificial",
+        "items": [
+          {
+            "name": "ChatGpt Prompt",
+            "desc": "Hablar con la IA usando prompt personalizado.",
+            "path": "/ai/gptprompt",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "text",
+                  "type": "text",
+                  "desc": "Texto base para hablar",
+                  "required": true
+                },
+                {
+                  "name": "prompt",
+                  "type": "text",
+                  "desc": "Prompt personalizado",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "ChatGpt",
+            "desc": "Chat simple con la IA.",
+            "path": "/ai/chatgpt",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "text",
+                  "type": "text",
+                  "desc": "Texto base para conversar",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Anime",
+        "items": [
+          {
+            "name": "Interacción",
+            "desc": "Consultar interacciones disponibles.",
+            "path": "/sfw/interaction",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "type",
+                  "type": "text",
+                  "desc": "Tipo de interacción",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Downloads",
+        "items": [
+          {
+            "name": "Facebook",
+            "desc": "Descargar videos de Facebook.",
+            "path": "/dow/facebook",
+            "method": "GET",
+            "status": "ready",
+            "location": "US",
+            "params": {
+              "query": [
+                {
+                  "name": "url",
+                  "type": "text",
+                  "desc": "URL del video",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Pinterest",
+            "desc": "Descargar multimedia de Pinterest.",
+            "path": "/dow/pinterest",
+            "method": "GET",
+            "status": "ready",
+            "location": "US",
+            "params": {
+              "query": [
+                {
+                  "name": "url",
+                  "type": "text",
+                  "desc": "URL de Pinterest",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+{
+  "name": "SoundCloud",
+  "desc": "Descargar canciones desde enlaces de SoundCloud.",
+  "path": "/dow/soundcloud",
+  "method": "GET",
+  "status": "ready",
+  "location": "US",
+  "params": {
+    "query": [
+      {
+        "name": "url",
+        "type": "text",
+        "desc": "URL de la canción en SoundCloud",
+        "required": true
+      },
+      {
+        "name": "apikey",
+        "type": "text",
+        "desc": "Ingresa tu clave de acceso",
+        "required": true
+      }
+    ]
+  }
+},
+          {
+            "name": "Tiktok",
+            "desc": "Descargar videos de TikTok.",
+            "path": "/dow/tiktok",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "url",
+                  "type": "text",
+                  "desc": "URL del TikTok",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Youtube MP4",
+            "desc": "Descargar video en formato MP4.",
+            "path": "/dow/ytmp4",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "url",
+                  "type": "text",
+                  "desc": "URL de YouTube",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Youtube MP3",
+            "desc": "Descargar audio en formato MP3.",
+            "path": "/dow/ytmp3",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "url",
+                  "type": "text",
+                  "desc": "URL de YouTube",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Youtube MP3 v2",
+            "desc": "Descargar audio en formato MP3 (v2).",
+            "path": "/dow/ytmp3v2",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "url",
+                  "type": "text",
+                  "desc": "URL de YouTube",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Youtube MP4 v2",
+            "desc": "Descargar video en formato MP4 (v2).",
+            "path": "/dow/ytmp4v2",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "url",
+                  "type": "text",
+                  "desc": "URL de YouTube",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Google Drive",
+            "desc": "Descargar archivo de Google Drive.",
+            "path": "/dow/gdrive",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "url",
+                  "type": "text",
+                  "desc": "Enlace público del archivo de Google Drive",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Instagram",
+            "desc": "Descargar de Instagram.",
+            "path": "/dow/instagram",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "url",
+                  "type": "text",
+                  "desc": "URL de la publicación de Instagram",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "MediaFire",
+            "desc": "Descargar de Mediafire.",
+            "path": "/dow/mediafire",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "url",
+                  "type": "text",
+                  "desc": "URL del archivo en Mediafire",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Nsfw",
+        "items": [
+          {
+            "name": "Interaction",
+            "desc": "Consultar interacciones NSFW disponibles.",
+            "path": "/nsfw/interaction",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "type",
+                  "type": "text",
+                  "desc": "Tipo de interacción",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Gelbooru",
+            "desc": "Buscar imágenes en Gelbooru.",
+            "path": "/nsfw/gelbooru",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "keyword",
+                  "type": "text",
+                  "desc": "Palabra clave de búsqueda",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "Danbooru",
+            "desc": "Buscar imágenes en Danbooru.",
+            "path": "/nsfw/danbooru",
+            "method": "GET",
+            "status": "ready",
+            "location": "EU",
+            "params": {
+              "query": [
+                {
+                  "name": "keyword",
+                  "type": "text",
+                  "desc": "Ingresa una búsqueda",
+                  "required": true
+                },
+                {
+                  "name": "apikey",
+                  "type": "text",
+                  "desc": "Ingresa tu clave de acceso",
+                  "required": true
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
