@@ -119,7 +119,7 @@ class APITester {
         lucide.createIcons();
 
         try {
-            const response = await fetch('/src/api.json');
+            const response = await fetch('/public/api.json');
             const data = await response.json();
 
             // PERBAIKAN: Mengakses array categories dari dalam properti 'content'
