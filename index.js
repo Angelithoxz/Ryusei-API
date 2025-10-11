@@ -11,8 +11,8 @@ const { resetKeys } = require('./database/db');
 
 function start() {
 //  console.clear();
-    global.host = "https://api.sylphy.xyz"
-  console.log(chalk.bgMagentaBright.white.bold('\n   ✨ Iniciando Sylphy API ✨\n'));
+    global.host = "https://api.ryuseiclub.xyz"
+  console.log(chalk.bgMagentaBright.white.bold('\n   ✨ Iniciando Ryusei API ✨\n'));
 
   const server = spawn('node', ['server.js'], { stdio: 'inherit' });
 
