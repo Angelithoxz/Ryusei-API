@@ -110,6 +110,7 @@ app.get("/stats", (req, res) => {
 });
 
 app.get('/api/stats', (req, res) => {
+const startTime = Date.now();
     const uptime = Math.floor((Date.now() - startTime) / 1000);
 
     const totalMemory = os.totalmem() / (1024 * 1024 * 1024);
