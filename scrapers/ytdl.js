@@ -149,7 +149,7 @@ const ytdl = {
 
             return {
                 status: true,
-                creator: "I'm Fz ~",
+                creator: "Angelithoxyz",
                 code: 200,
                 result: {
                     title: decrypted.title || "Null",
