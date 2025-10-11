@@ -108,7 +108,7 @@ router.get('/users', (req, res) => {
       else vipCount++;
     }
     const total = vipCount + freeCount;
-    res.json({ status: true, users: { VIP: String(vipCount), FREE: String(freeCount), ADMIN: String(adminCount), Total: String(total) } });
+    res.json({ status: true, creator: "Angelithoxyz", users: { VIP: String(vipCount), FREE: String(freeCount), ADMIN: String(adminCount), Total: String(total) } });
   } catch {
     res.status(500).json({ status: false, message: 'Error reading users data' });
   }
