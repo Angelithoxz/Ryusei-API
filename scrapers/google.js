@@ -23,7 +23,7 @@ async function google(query) {
         });
 let datas = {
 status: true,
-creator: "I'm Fz ~",
+creator: "Angelithoxyz",
 result: results
 }
         return datas;
