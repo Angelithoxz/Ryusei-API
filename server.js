@@ -191,6 +191,9 @@ app.use('/', tools);
 app.get('/store', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'store.html'));
 });
+app.get('/api', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'endpoints.html'));
+});
 /*******************************/
 
 /************* Errores *************/
