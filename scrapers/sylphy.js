@@ -4,7 +4,7 @@ async function ytmp3(url) {
 let res = await (await fetch(`https://ytdl.sylphy.xyz/download/audio/?url=${url}&mode=url`)).json()
 let data = {
  status: true,
- creator: "I'm Fz ~",
+ creator: "Angelithoxyz",
  data: res
 }
 return data
