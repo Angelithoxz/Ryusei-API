@@ -19,7 +19,7 @@ router.get('/home', ensureLogin, async (req, res) => {
   try {
     const host = req.get('host');
     global.domain = `${req.protocol}://${host}`;
-    const response = await fetch(`https://api.sylphy.xyz/ikey?apikey=${apikey}`);
+    const response = await fetch(`https://app.ryuseiclub xyz/ikey?apikey=${apikey}`);
     const info = await response.json();
     const usekey = info.limit;
     res.render('home', { username, email, apikey, limit, usekey, is__admin: isAdmin });
@@ -39,7 +39,7 @@ router.get('/admin', ensureLogin, (req, res) => {
 router.get('/profile', ensureLogin, async (req, res) => {
   const { username, email, apikey, limit } = req.session.user;
   try {
-    const response = await fetch(`https://api.sylphy.xyz/ikey?apikey=${apikey}`);
+    const response = await fetch(`https://app.ryuseiclub.xyz/ikey?apikey=${apikey}`);
     const info = await response.json();
     const usekey = info.limit;
     let name = username;
@@ -108,7 +108,7 @@ router.get('/users', (req, res) => {
       else vipCount++;
     }
     const total = vipCount + freeCount;
-    res.json({ status: true, creator: "i'm Fz ~", users: { VIP: String(vipCount), FREE: String(freeCount), ADMIN: String(adminCount), Total: String(total) } });
+    res.json({ status: true, users: { VIP: String(vipCount), FREE: String(freeCount), ADMIN: String(adminCount), Total: String(total) } });
   } catch {
     res.status(500).json({ status: false, message: 'Error reading users data' });
   }
