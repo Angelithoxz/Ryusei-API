@@ -76,6 +76,7 @@ app.use((req, res, next) => {
   console.log(chalk.green("🌱 Solicitud al endpoint:"), chalk.blue(endpoint));
   console.log(chalk.cyan("🌿 IP:"), chalk.red(ip));
   console.log(chalk.yellow("------"));
+visitCount++
 
   next();
 });
@@ -109,8 +110,52 @@ app.get("/stats", (req, res) => {
   });
 });
 
-app.get('/api/stats', (req, res) => {
+
+const os = require('os');
 const startTime = Date.now();
+
+function formatUptime(seconds) {
+    const days = Math.floor(seconds / 86400);
+    const hours = Math.floor((seconds % 86400) / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${days}:${hours}:${minutes}:${secs}`;
+}
+
+function getCpuUsage(callback) {
+    const startMeasure = cpuAverage();
+
+    setTimeout(() => {
+        const endMeasure = cpuAverage();
+
+        const idleDifference = endMeasure.idle - startMeasure.idle;
+        const totalDifference = endMeasure.total - startMeasure.total;
+
+        const percentageCPU = 100 - Math.floor(100 * idleDifference / totalDifference);
+
+        callback(percentageCPU.toFixed(2) + '%');
+    }, 1000);
+}
+
+function cpuAverage() {
+    const cpus = os.cpus();
+
+    let totalIdle = 0, totalTick = 0;
+
+    cpus.forEach(core => {
+        for (type in core.times) {
+            totalTick += core.times[type];
+        }
+        totalIdle += core.times.idle;
+    });
+
+    return {
+        idle: totalIdle / cpus.length,
+        total: totalTick / cpus.length
+    };
+}
+
+app.get('/api/stats', (req, res) => {
     const uptime = Math.floor((Date.now() - startTime) / 1000);
 
     const totalMemory = os.totalmem() / (1024 * 1024 * 1024);
@@ -120,13 +165,13 @@ const startTime = Date.now();
     const cpu = os.cpus()[0].model;
     const osPlatform = `${os.platform()} ${os.release()}`;
 
-    const totalRequests = getTotalUsage();
+    const totalRequests = 0;
     const uniqueVisitors = visitCount || 0;
 
     getCpuUsage((cpuUsage) => {
         const response = {
             status: true,
-            creator: "Aneglithoxyz",
+            creator: "I'm Zyxl",
             ip: req.ip.replace(/^::ffff:/, ''),
             totalRequests,
             uniqueVisitors,
