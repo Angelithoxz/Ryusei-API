@@ -114,7 +114,7 @@
     <script>
     // Mostrar el enlace de admin si el usuario es administrador
     $(document).ready(function() {
-        $.get('/api/user/data', function(data) {
+        $.get('https://api.stellarwa.xyz/api/user/data', function(data) {
             if (data.admin) {
                 $('#adminSection').show();
             }
