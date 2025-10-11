@@ -1,4 +1,4 @@
-const express = require('express');
+ const express = require('express');
 const chalk = require('chalk');
 const fs = require('fs');
 const favicon = require("serve-favicon");
@@ -107,6 +107,46 @@ app.get("/stats", (req, res) => {
       ? { apikey: topApikey[0], uses: topApikey[1] }
       : null
   });
+});
+
+app.get('/api/stats', (req, res) => {
+    const uptime = Math.floor((Date.now() - startTime) / 1000);
+
+    const totalMemory = os.totalmem() / (1024 * 1024 * 1024);
+    const freeMemory = os.freemem() / (1024 * 1024 * 1024);
+    const usedMemory = totalMemory - freeMemory;
+    const cpuCores = os.cpus().length;
+    const cpu = os.cpus()[0].model;
+    const osPlatform = `${os.platform()} ${os.release()}`;
+
+    const totalRequests = getTotalUsage();
+    const uniqueVisitors = visitCount || 0;
+
+    getCpuUsage((cpuUsage) => {
+        const response = {
+            status: true,
+            creator: "Aneglithoxyz",
+            ip: req.ip.replace(/^::ffff:/, ''),
+            totalRequests,
+            uniqueVisitors,
+            server: {
+                os: osPlatform,
+                platform: os.platform(),
+                uptime: formatUptime(uptime),
+                cpu,
+                cpuCores,
+                memory: {
+                    total: `${totalMemory.toFixed(2)} GB`,
+                    used: `${usedMemory.toFixed(2)} GB`,
+                    free: `${freeMemory.toFixed(2)} GB`,
+                    usage: `${((usedMemory / totalMemory) * 100).toFixed(2)}%`
+                },
+                cpuUsage
+            }
+        };
+
+        res.json(response);
+    });
 });
 
 
