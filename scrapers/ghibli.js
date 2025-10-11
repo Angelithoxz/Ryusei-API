@@ -132,7 +132,7 @@ await fs.writeFileSync(file, buffer)
 const result = await colorifyai.create(file)
 return {
 status: true,
-creator: "i'm Fz ~",
+creator: "Angelithoxyz",
 image: result.imageUrl
 }
 }
